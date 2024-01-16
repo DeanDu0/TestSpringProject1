@@ -8,6 +8,7 @@ import com.itheima.factory.OrderDaoFactory;
 import com.itheima.factory.UseDaoFactory;
 import com.itheima.service.BookService;
 import com.itheima.service.impl.BookServiceImpl;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -33,5 +34,7 @@ public class App {
         //ctx.close();
         DruidDataSource druidDataSource= (DruidDataSource) ctx.getBean("dataSource");
         System.out.println(druidDataSource);
+        ComboPooledDataSource comboPooledDataSource= (ComboPooledDataSource) ctx.getBean("comboPooledDataSource");
+        System.out.println(comboPooledDataSource);
     }
 }
