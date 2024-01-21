@@ -67,7 +67,17 @@
         <bean id="useDaoFactory" class="com.itheima.factory.UseDaoFactory"/>
         <bean id="useDao" factory-bean="useDaoFactory" factory-method="getUseDao"/>
         <bean id="useDao" class="com.itheima.factory.UseDaoFactoryBean"/>-->
-        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <bean id="dataSource"  class="com.alibaba.druid.pool.DruidDataSource">
+            <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://localhost:3306"/>
+            <property name="username" value="root"/>
+            <property name="password" value="123456"/>
+        </bean>
+        <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+            <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jdbcUrl" value="jdbc:mysql://localhost:3306"/>
+            <property name="user" value="root"/>
+            <property name="password" value="123456"/>
 
         </bean>
 
