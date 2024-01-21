@@ -12,7 +12,7 @@
         <!--2.配置bean-->
         <!--bean标签配置bean，id标签给bean起名字，class属性表示给bean定义类型-->
 <!--        <bean id="bookDao" name="dao" class="com.itheima.dao.impl.BookDaoImpl"/>-->
-        <context:component-scan base-package="com.itheima"/>
+<!--        <context:component-scan base-package="com.itheima"/>-->
 
 <!--        <bean id="bookDao" name="dao" class="com.itheima.dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy">-->
 <!--        &lt;!&ndash;<property name="connectionNum" value="10"/>&ndash;&gt;-->
@@ -56,36 +56,36 @@
 
 <!--        </bean>-->
         <bean id="useDao" class="com.itheima.dao.impl.UseDaoImpl"/>
-        <bean id="bookService" name="service" class="com.itheima.service.impl.BookServiceImpl" autowire="byName">
-        <!--配置service与dao之间的关系-->
-        <!--property标签表示要配置当前bean的属性，name属性表示要配置哪一个属性，ref表示要参照哪一个bean-->
-                <!--<property name="bookDao" ref="bookDao"/>
-                <property name="useDao" ref="useDao"/>
-                <constructor-arg name="bookDao" ref="bookDao"/>
-                <constructor-arg name="useDao" ref="useDao"/>-->
-        </bean>
-        <bean id="orderDao" class="com.itheima.factory.OrderDaoFactory" factory-method="getOrderDao"/>
+<!--        <bean id="bookService" name="service" class="com.itheima.service.impl.BookServiceImpl" autowire="byName">-->
+<!--        &lt;!&ndash;配置service与dao之间的关系&ndash;&gt;-->
+<!--        &lt;!&ndash;property标签表示要配置当前bean的属性，name属性表示要配置哪一个属性，ref表示要参照哪一个bean&ndash;&gt;-->
+<!--                &lt;!&ndash;<property name="bookDao" ref="bookDao"/>-->
+<!--                <property name="useDao" ref="useDao"/>-->
+<!--                <constructor-arg name="bookDao" ref="bookDao"/>-->
+<!--                <constructor-arg name="useDao" ref="useDao"/>&ndash;&gt;-->
+<!--        </bean>-->
+<!--        <bean id="orderDao" class="com.itheima.factory.OrderDaoFactory" factory-method="getOrderDao"/>-->
         <!--
         <bean id="useDaoFactory" class="com.itheima.factory.UseDaoFactory"/>
         <bean id="useDao" factory-bean="useDaoFactory" factory-method="getUseDao"/>
         <bean id="useDao" class="com.itheima.factory.UseDaoFactoryBean"/>-->
         <!--1.开启context命名空间，多个加载文件*.proeprties或者是用逗号隔开-->
         <!--2.使用context空间加载properties文件-->
-        <context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="NEVER"/>
+<!--        <context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="NEVER"/>-->
 
-        <bean id="dataSource"  class="com.alibaba.druid.pool.DruidDataSource">
-            <property name="driverClassName" value="${jdbc.driver}"/>
-            <property name="url" value="${jdbc.url}"/>
-            <property name="username" value="${jdbc.name}"/>
-            <property name="password" value="${jdbc.password}"/>
-        </bean>
-        <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-            <property name="driverClass" value="${jdbc.driver}"/>
-            <property name="jdbcUrl" value="${jdbc.url}"/>
-            <property name="user" value="${jdbc.name}"/>
-            <property name="password" value="${jdbc.password}"/>
+<!--        <bean id="dataSource"  class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--            <property name="driverClassName" value="${jdbc.driver}"/>-->
+<!--            <property name="url" value="${jdbc.url}"/>-->
+<!--            <property name="username" value="${jdbc.name}"/>-->
+<!--            <property name="password" value="${jdbc.password}"/>-->
+<!--        </bean>-->
+<!--        <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--            <property name="driverClass" value="${jdbc.driver}"/>-->
+<!--            <property name="jdbcUrl" value="${jdbc.url}"/>-->
+<!--            <property name="user" value="${jdbc.name}"/>-->
+<!--            <property name="password" value="${jdbc.password}"/>-->
 
-        </bean>
+<!--        </bean>-->
 
 
 </beans>
