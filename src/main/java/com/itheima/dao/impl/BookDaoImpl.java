@@ -1,15 +1,24 @@
 package com.itheima.dao.impl;
 
 import com.itheima.dao.BookDao;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.*;
 
+@Repository("bookDao")
+@Scope("singleton")
 public class BookDaoImpl implements BookDao {
     private BookDaoImpl(){
         System.out.println("验证bean创建对象使用了构造方法");
     }
 
+
     private int connectionNum;
+    @Value("${name}")
     private String databaseName;
     private int[] array;
     private List<String> list;
@@ -49,10 +58,13 @@ public class BookDaoImpl implements BookDao {
 //        this.databaseName = databaseName;
 //    }
 
+
+    @PostConstruct
     public void init(){
         System.out.println("bookDao bean 初始化执行"+connectionNum+";"+databaseName);
 
     }
+    @PreDestroy
     public void destroy(){
         System.out.println("bookDao bean 销毁执行");
 

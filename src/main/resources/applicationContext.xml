@@ -1,60 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+        ">
         <!--1.导入对应的spring的坐标spring-context，对应的版本是5.2.10.RELEASE-->
         <!--2.配置bean-->
         <!--bean标签配置bean，id标签给bean起名字，class属性表示给bean定义类型-->
-        <bean id="bookDao" name="dao" class="com.itheima.dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy">
-        <!--<property name="connectionNum" value="10"/>-->
-        <!--<property name="databaseName" value="mySQl"/>-->
-                <constructor-arg type="int" value="10"/>
-                <constructor-arg type="java.lang.String" value="mySQL"/>
-                <property name="array">
-                    <array>
-                        <value>100</value>
-                        <value>200</value>
-                        <value>300</value>
-                    </array>
-                </property>
-                <property name="list">
-                    <list>
-                        <value>DeanDu</value>
-                        <value>Jason</value>
-                    </list>
-                </property>
-                <property name="set">
-                    <set>
-                        <value>DeanDu</value>
-                        <value>Jason</value>
-                    </set>
-                </property>
-                <property name="map">
-                    <map>
-                        <entry key="country" value="China"/>
-                        <entry key="province" value="henan"/>
-                        <entry key="city" value="kaifeng"/>
-                    </map>
-                </property>
-                <property name="properties">
-                    <props>
-                        <prop key="country">China</prop>
-                        <prop key="province">henan</prop>
-                        <prop key="city">kaifeng</prop>
+<!--        <context:component-scan base-package="com.itheima"/>-->
+<!--        <bean id="bookDao" name="dao" class="com.itheima.dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy">-->
+<!--        &lt;!&ndash;<property name="connectionNum" value="10"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;<property name="databaseName" value="mySQl"/>&ndash;&gt;-->
+<!--                <constructor-arg type="int" value="10"/>-->
+<!--                <constructor-arg type="java.lang.String" value="mySQL"/>-->
+<!--                <property name="array">-->
+<!--                    <array>-->
+<!--                        <value>100</value>-->
+<!--                        <value>200</value>-->
+<!--                        <value>300</value>-->
+<!--                    </array>-->
+<!--                </property>-->
+<!--                <property name="list">-->
+<!--                    <list>-->
+<!--                        <value>DeanDu</value>-->
+<!--                        <value>Jason</value>-->
+<!--                    </list>-->
+<!--                </property>-->
+<!--                <property name="set">-->
+<!--                    <set>-->
+<!--                        <value>DeanDu</value>-->
+<!--                        <value>Jason</value>-->
+<!--                    </set>-->
+<!--                </property>-->
+<!--                <property name="map">-->
+<!--                    <map>-->
+<!--                        <entry key="country" value="China"/>-->
+<!--                        <entry key="province" value="henan"/>-->
+<!--                        <entry key="city" value="kaifeng"/>-->
+<!--                    </map>-->
+<!--                </property>-->
+<!--                <property name="properties">-->
+<!--                    <props>-->
+<!--                        <prop key="country">China</prop>-->
+<!--                        <prop key="province">henan</prop>-->
+<!--                        <prop key="city">kaifeng</prop>-->
 
-                    </props>
-                </property>
+<!--                    </props>-->
+<!--                </property>-->
 
-        </bean>
+<!--        </bean>-->
         <bean id="useDao" class="com.itheima.dao.impl.UseDaoImpl"/>
-        <bean id="bookService" name="service" class="com.itheima.service.impl.BookServiceImpl" autowire="byName">
-        <!--配置service与dao之间的关系-->
-        <!--property标签表示要配置当前bean的属性，name属性表示要配置哪一个属性，ref表示要参照哪一个bean-->
-                <!--<property name="bookDao" ref="bookDao"/>
-                <property name="useDao" ref="useDao"/>
-                <constructor-arg name="bookDao" ref="bookDao"/>
-                <constructor-arg name="useDao" ref="useDao"/>-->
-        </bean>
+<!--        <bean id="bookService" name="service" class="com.itheima.service.impl.BookServiceImpl" autowire="byType">-->
+<!--        &lt;!&ndash;配置service与dao之间的关系&ndash;&gt;-->
+<!--        &lt;!&ndash;property标签表示要配置当前bean的属性，name属性表示要配置哪一个属性，ref表示要参照哪一个bean&ndash;&gt;-->
+<!--                &lt;!&ndash;<property name="bookDao" ref="bookDao"/>-->
+<!--                <property name="useDao" ref="useDao"/>-->
+<!--                <constructor-arg name="bookDao" ref="bookDao"/>-->
+<!--                <constructor-arg name="useDao" ref="useDao"/>&ndash;&gt;-->
+<!--        </bean>-->
         <bean id="orderDao" class="com.itheima.factory.OrderDaoFactory" factory-method="getOrderDao"/>
         <!--
         <bean id="useDaoFactory" class="com.itheima.factory.UseDaoFactory"/>
